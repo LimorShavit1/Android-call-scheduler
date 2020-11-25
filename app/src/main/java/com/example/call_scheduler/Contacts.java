@@ -11,7 +11,12 @@ final public class Contacts {
         contacts.put("bar", new CallRequest(19, 50,21, 10,
                 23, 11,2020, "0526379155"));
     }
+
     public HashMap<String, CallRequest> getContacts() {
-        return contacts;
+        HashMap<String, CallRequest> deepCopyContacts = new HashMap<String, CallRequest>();
+        for (String name: contacts.keySet()) {
+            deepCopyContacts.put(name, new CallRequest(contacts.get(name)));
+        }
+        return deepCopyContacts;
     }
 }
